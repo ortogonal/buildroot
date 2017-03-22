@@ -1,0 +1,9 @@
+config BR2_PACKAGE_QT5VIRTUALKEYBOARD
+	bool "qt5virtualkeyboard"
+	depends on BR2_PACKAGE_QT5DECLARATIVE_QUICK
+	select BR2_PACKAGE_QT5SVG
+	help
+	  Qt Virtual Keyboard is a virtual keyboard framework that consists of a
+	  C++ backend supporting custom input methods as well as a UI frontend
+	  implemented in QML.
+
