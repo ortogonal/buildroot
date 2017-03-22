@@ -1,0 +1,11 @@
+--- a/src/hardwareintegration/compositor/wayland-egl/wayland-egl.pri	2017-03-22 08:07:19.627732172 +0100
++++ b/src/hardwareintegration/compositor/wayland-egl/wayland-egl.pri	2017-03-22 08:40:31.481528394 +0100
+@@ -2,6 +2,8 @@
+ 
+ QMAKE_USE_PRIVATE += wayland-server wayland-egl
+ 
++DEFINES += MESA_EGL_NO_X11_HEADERS
++
+ QT += egl_support-private
+ 
+ SOURCES += \
