@@ -74,8 +74,14 @@ config BR2_PACKAGE_AMD_CATALYST_MODULE
 
 config BR2_PACKAGE_AMD_CATALYST_OPENCL
 	bool "OpenCL support"
+	select BR2_PACKAGE_MESA3D_HEADERS
+	select BR2_PACKAGE_HAS_LIBOPENCL
 	help
 	  Installs the OpenCL binary blobs and the ICD profile
 	  for GPGPU computing.
+
+config BR2_PACKAGE_PROVIDES_LIBOPENCL
+	default "amd-catalyst"
+	depends on BR2_PACKAGE_AMD_CATALYST_OPENCL
 
 endif # BR2_PACKAGE_AMD_CATALYST

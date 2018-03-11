@@ -42,6 +42,8 @@ endif
 
 ifeq ($(BR2_PACKAGE_AMD_CATALYST_OPENCL),y)
 
+AMD_CATALYST_DEPENDENCIES = mesa3d-headers
+AMD_CATALYST_PROVIDES += libopencl
 AMD_CATALYST_OCL_SUFFIX = $(if $(BR2_x86_64),64,32)
 AMD_CATALYST_OPENCL_FILES = \
 	libOpenCL.so.1 \
@@ -69,7 +71,7 @@ ifeq ($(BR2_PACKAGE_AMD_CATALYST_XORG), y)
 # be installed before any user of it. The only way to do so is to have this
 # package depends on mesa3d-headers.
 AMD_CATALYST_DEPENDENCIES += mesa3d-headers
-AMD_CATALYST_PROVIDES = libgl
+AMD_CATALYST_PROVIDES += libgl
 AMD_CATALYST_X11R6_LIB = $(@D)/xpic$(if $(BR2_x86_64),_64a)/usr/X11R6/lib$(AMD_CATALYST_LIB_SUFFIX)
 
 define AMD_CATALYST_INSTALL_GL_LIBS
