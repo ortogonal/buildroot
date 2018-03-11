@@ -21,6 +21,10 @@ menuconfig BR2_PACKAGE_TESSERACT_OCR
 
 if BR2_PACKAGE_TESSERACT_OCR
 
+config BR2_PACKAGE_TESSERACT_OCR_OPENCL_SUPPORT
+	bool "tesseract-ocr with OpenCL support"
+	depends on BR2_PACKAGE_HAS_LIBOPENCL
+
 comment "tesseract-ocr languages support"
 
 config BR2_PACKAGE_TESSERACT_OCR_LANG_ENG

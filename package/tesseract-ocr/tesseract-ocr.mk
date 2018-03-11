@@ -20,8 +20,15 @@ TESSERACT_OCR_DEPENDENCIES = leptonica host-pkgconf
 TESSERACT_OCR_INSTALL_STAGING = YES
 TESSERACT_OCR_CONF_ENV = \
 	LIBLEPT_HEADERSDIR=$(STAGING_DIR)/usr/include/leptonica
+
+ifeq ($(BR2_PACKAGE_TESSERACT_OCR_OPENCL_SUPPORT),y)
+TESSERACT_OCR_DEPENDENCIES += libopencl
+TESSERACT_OCR_CONF_OPTS = \
+	--enable-opencl
+else
 TESSERACT_OCR_CONF_OPTS = \
 	--disable-opencl
+endif
 
 # Language data files download
 ifeq ($(BR2_PACKAGE_TESSERACT_OCR_LANG_ENG),y)
