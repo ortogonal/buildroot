@@ -23,7 +23,7 @@ WINE_CONF_OPTS = \
 	--without-gphoto \
 	--without-gsm \
 	--without-hal \
-	--without-opencl \
+	--without-krb5 \
 	--without-oss
 
 # Wine uses a wrapper around gcc, and uses the value of --host to
@@ -183,6 +183,13 @@ WINE_CONF_OPTS += --with-openal
 WINE_DEPENDENCIES += openal
 else
 WINE_CONF_OPTS += --without-openal
+endif
+
+ifeq ($(BR2_PACKAGE_HAS_LIBOPENCL),y)
+WINE_CONF_OPTS += --with-opencl
+WINE_DEPENDENCIES += libopencl
+else
+WINE_CONF_OPTS += --without-opencl
 endif
 
 ifeq ($(BR2_PACKAGE_OPENLDAP),y)
