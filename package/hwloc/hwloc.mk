@@ -14,13 +14,25 @@ HWLOC_DEPENDENCIES = host-pkgconf
 HWLOC_INSTALL_STAGING = YES
 
 HWLOC_CONF_OPTS = \
-	--disable-opencl \
-	--disable-cuda \
 	--disable-nvml \
 	--disable-gl \
 	--disable-cairo \
 	--disable-libxml2 \
 	--disable-doxygen
+
+ifeq ($(BR2_PACKAGE_HWLOC_USE_OPENCL),y)
+HWLOC_DEPENDENCIES += libopencl
+# hwloc do not have an option for explicitly enable OpenCL
+# We have to trust there configuration scripts to find OpenCL
+ifneq ($(BR2_PACKAGE_PROVIDES_LIBOPENCL),nvidia-driver)
+HWLOC_CONF_OPTS += \
+	--disable-cuda
+endif
+else
+HWLOC_CONF_OPTS += \
+	--disable-opencl \
+	--disable-cuda
+endif
 
 ifeq ($(BR2_PACKAGE_LIBPCIACCESS),y)
 HWLOC_CONF_OPTS += --enable-pci

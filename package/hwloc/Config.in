@@ -11,5 +11,13 @@ config BR2_PACKAGE_HWLOC
 
 	  http://www.open-mpi.org/projects/hwloc/
 
+if BR2_PACKAGE_HWLOC
+
+config BR2_PACKAGE_HWLOC_USE_OPENCL
+	bool "use opencl"
+	depends on BR2_PACKAGE_HAS_LIBOPENCL
+
+endif
+
 comment "hwloc needs a toolchain w/ threads"
 	depends on !BR2_TOOLCHAIN_HAS_THREADS
