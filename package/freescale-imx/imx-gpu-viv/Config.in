@@ -2,10 +2,14 @@ comment "imx-gpu-viv needs a glibc toolchain with armhf enabled"
 	depends on BR2_arm
 	depends on !BR2_TOOLCHAIN_USES_GLIBC || !BR2_ARM_EABIHF
 
+comment "imx-gpu-viv needs a glibc toolchain"
+	depends on BR2_aarch64
+	depends on !BR2_TOOLCHAIN_USES_GLIBC
+
 config BR2_PACKAGE_IMX_GPU_VIV
 	bool "imx-gpu-viv"
-	# Pre-built binaries only available for ARM EABIhf
-	depends on BR2_ARM_EABIHF
+	# 32-bit pre-built binaries only available for ARM EABIhf
+	depends on BR2_ARM_EABIHF || BR2_aarch64
 	# Library binaries are linked against libc.so.6
 	depends on BR2_TOOLCHAIN_USES_GLIBC
 	select BR2_PACKAGE_HAS_LIBEGL

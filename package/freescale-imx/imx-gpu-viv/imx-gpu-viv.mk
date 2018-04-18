@@ -4,7 +4,12 @@
 #
 ################################################################################
 
+GCC_ARCH = $(call qstrip,$(BR2_ARCH))
+ifeq ($(GCC_ARCH),aarch64)
+IMX_GPU_VIV_VERSION = 6.2.4.p1.0-aarch64
+else
 IMX_GPU_VIV_VERSION = 6.2.2.p0-aarch32
+endif
 IMX_GPU_VIV_SITE = $(FREESCALE_IMX_SITE)
 IMX_GPU_VIV_SOURCE = imx-gpu-viv-$(IMX_GPU_VIV_VERSION).bin
 
