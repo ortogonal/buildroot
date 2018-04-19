@@ -17,6 +17,8 @@ IMX_GPU_VIV_REDISTRIBUTE = NO
 IMX_GPU_VIV_PROVIDES = libegl libgles libopenvg
 IMX_GPU_VIV_LIB_TARGET = $(call qstrip,$(BR2_PACKAGE_IMX_GPU_VIV_OUTPUT))
 
+IMX_GPU_VIV_DEPENDENCIES = libdrm
+
 ifeq ($(IMX_GPU_VIV_LIB_TARGET),x11)
 # The libGAL.so library provided by imx-gpu-viv uses X functions. Packages
 # may want to link against libGAL.so (QT5 Base with OpenGL and X support

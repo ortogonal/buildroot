@@ -11,6 +11,7 @@ config BR2_PACKAGE_IMX_GPU_VIV
 	select BR2_PACKAGE_HAS_LIBEGL
 	select BR2_PACKAGE_HAS_LIBGLES
 	select BR2_PACKAGE_HAS_LIBOPENVG
+	select BR2_PACKAGE_LIBDRM
 	help
 	  Userspace libraries for Vivante GPU on i.MX6 platforms
 
